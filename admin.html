@@ -48,14 +48,30 @@
             <label for="validity">Valid Until</label>
             <input type="date" id="validity" required>
 
+            <h3>Shop Photo</h3>
+            <label for="shopImage">Choose shop / premises photo</label>
+            <input type="file" id="shopImage"
+                   accept="image/jpeg,image/png,image/webp">
+            <img id="shopPreview" alt="Shop photo preview"
+                 hidden style="max-width:100%;max-height:220px;margin-top:10px;">
+
+            <h3>Product / Food Photo</h3>
+            <label for="productImage">Choose product or food photo</label>
+            <input type="file" id="productImage"
+                   accept="image/jpeg,image/png,image/webp">
+            <img id="productPreview" alt="Product photo preview"
+                 hidden style="max-width:100%;max-height:220px;margin-top:10px;">
+
             <button type="submit">Add Offer</button>
         </form>
 
-        <p id="adminMessage"></p>
+        <p id="adminMessage" role="status"></p>
+
         <h2>My Offers</h2>
         <div id="adminOffers"></div>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="admin.js"></script>
 </body>
 </html>

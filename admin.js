@@ -62,3 +62,40 @@ form.addEventListener("submit", function(event) {
 });
 
 displayOffers();
+
+function setupImagePreview(inputId, previewId) {
+    const input = document.getElementById(inputId);
+    const preview = document.getElementById(previewId);
+
+    if (!input || !preview) return;
+
+    input.addEventListener("change", function () {
+        const file = input.files[0];
+
+        if (!file) {
+            preview.removeAttribute("src");
+            preview.hidden = true;
+            return;
+        }
+
+        if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+            alert("Please choose a JPG, PNG, or WebP image.");
+            input.value = "";
+            preview.hidden = true;
+            return;
+        }
+
+        if (file.size > 2 * 1024 * 1024) {
+            alert("Please choose an image smaller than 2 MB.");
+            input.value = "";
+            preview.hidden = true;
+            return;
+        }
+
+        preview.src = URL.createObjectURL(file);
+        preview.hidden = false;
+    });
+}
+
+setupImagePreview("shopImage", "shopPreview");
+setupImagePreview("productImage", "productPreview");

@@ -1,56 +1,40 @@
-const offers = [
-    {
-        name: "Mag Bites",
-        category: "Cafe",
-        area: "Bengaluru",
-        icon: "☕",
-        deal: "Special Cafe Offer",
-        description: "Check out the cafe's latest food and beverage offers.",
-        expiry: "Confirm with the vendor",
-        phone: "",
-        map: ""
-    },
-    {
-        name: "Daily Tiffin Corner",
-        category: "Tiffin",
-        area: "Bengaluru",
-        icon: "🍱",
-        deal: "Lunch Specials",
-        description: "Explore meal options and current tiffin deals.",
-        expiry: "Confirm with the vendor",
-        phone: "",
-        map: ""
-    },
-    {
-        name: "Fresh Basket",
-        category: "Grocery",
-        area: "Bengaluru",
-        icon: "🛒",
-        deal: "Weekly Store Offers",
-        description: "Ask the store about its current grocery discounts.",
-        expiry: "Confirm with the vendor",
-        phone: "",
-        map: ""
-    },
-    {
-        name: "Style Street",
-        category: "Clothing",
-        area: "Bengaluru",
-        icon: "👕",
-        deal: "Fashion Specials",
-        description: "Discover clothing and seasonal offers.",
-        expiry: "Confirm with the vendor",
-        phone: "",
-        map: ""
-    }
-];
 
 let selectedCategory = "All";
 
 const offerContainer = document.getElementById("offers");
 const searchInput = document.getElementById("search");
+const resultCount = document.getElementById("resultCount");
+
+// Read offers saved by the admin panel
+function getOffers() {
+    return JSON.parse(
+        localStorage.getItem("dealDostOffers") || "[]"
+    ).map(offer => ({
+        name: offer.shopName || offer.name || "",
+        category: offer.category || "",
+        area: offer.area || "",
+        icon: offer.icon || getCategoryIcon(offer.category),
+        deal: offer.offerTitle || offer.deal || "",
+        description: offer.description || "",
+        expiry: offer.validity || offer.expiry || "Confirm with vendor"
+    }));
+}
+
+function getCategoryIcon(category) {
+    const icons = {
+        Cafe: "☕",
+        Tiffin: "🍱",
+        Restaurant: "🍽️",
+        Grocery: "🛒",
+        Clothing: "👕"
+    };
+
+    return icons[category] || "🏪";
+}
 
 function displayOffers() {
+    // Reload saved offers each time the page renders
+    const offers = getOffers();
     const searchText = searchInput.value.toLowerCase().trim();
 
     const filteredOffers = offers.filter(offer => {
@@ -70,12 +54,11 @@ function displayOffers() {
             searchableText.includes(searchText);
     });
 
-    document.getElementById("resultCount").textContent =
-        `${filteredOffers.length} listings`;
+    resultCount.textContent = `${filteredOffers.length} listings`;
 
     if (filteredOffers.length === 0) {
         offerContainer.innerHTML =
-            '<p class="empty">No matching offers found. Try another search.</p>';
+            '<p class="empty">No offers found. Add an offer in the admin panel or try another search.</p>';
         return;
     }
 
@@ -96,6 +79,7 @@ function displayOffers() {
     `).join("");
 }
 
+// Category filters
 document.querySelectorAll(".category").forEach(button => {
     button.addEventListener("click", () => {
         selectedCategory = button.dataset.category;
@@ -109,6 +93,13 @@ document.querySelectorAll(".category").forEach(button => {
     });
 });
 
+// Search
 searchInput.addEventListener("input", displayOffers);
+
+// Refresh listings when returning from the admin page
+window.addEventListener("pageshow", displayOffers);
+
+// Update if another page in the same browser changes localStorage
+window.addEventListener("storage", displayOffers);
 
 displayOffers();
