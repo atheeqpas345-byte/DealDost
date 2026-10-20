@@ -1,0 +1,282 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f8f8f8;
+    color: #222;
+}
+
+.topbar {
+    background: #e5232e;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo {
+    background: white;
+    color: #e5232e;
+    border-radius: 10px;
+    padding: 9px;
+    font-size: 19px;
+}
+
+.topbar p {
+    margin: 0;
+}
+
+.hero {
+    background: #fff0f0;
+    padding: 55px 7%;
+}
+
+.eyebrow {
+    color: #e5232e;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 12px;
+}
+
+.hero h1 {
+    max-width: 650px;
+    font-size: clamp(32px, 5vw, 54px);
+    margin: 12px 0;
+    line-height: 1.12;
+}
+
+.hero h1 span {
+    color: #e5232e;
+}
+
+.hero > p:not(.eyebrow) {
+    color: #666;
+    line-height: 1.6;
+}
+
+#search {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-top: 25px;
+    font-size: 15px;
+    background: white;
+}
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px 6%;
+}
+
+h2 {
+    margin-bottom: 12px;
+}
+
+.categories {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 20px 0 38px;
+}
+
+.category {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    padding: 11px 17px;
+    cursor: pointer;
+}
+
+.category.active,
+.category:hover {
+    background: #e5232e;
+    border-color: #e5232e;
+    color: white;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.section-heading p {
+    color: #777;
+}
+
+#resultCount {
+    color: #777;
+    font-size: 14px;
+}
+
+.offers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+    gap: 20px;
+}
+
+.offer-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    padding: 22px;
+    transition: transform 0.2s;
+}
+
+.offer-card:hover {
+    transform: translateY(-4px);
+}
+
+.offer-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.offer-type {
+    color: #e5232e;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.offer-card h3 {
+    margin: 10px 0;
+    font-size: 21px;
+}
+
+.offer-card p {
+    color: #666;
+    line-height: 1.5;
+}
+
+.deal-box {
+    background: #fff0f0;
+    color: #b91c28;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 16px 0;
+    font-weight: bold;
+}
+
+.offer-card a {
+    display: inline-block;
+    background: #e5232e;
+    color: white;
+    padding: 11px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.empty {
+    color: #666;
+    padding: 20px 0;
+}
+
+footer {
+    margin-top: 40px;
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+footer p,
+footer small {
+    color: #ccc;
+}
+
+@media (max-width: 600px) {
+    .topbar {
+        padding: 16px 5%;
+    }
+
+    .hero {
+        padding: 38px 5%;
+    }
+
+    main {
+        padding: 25px 5%;
+    }
+}
+
+.admin-header {
+    background: #e5232e;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+.admin-header a {
+    color: white;
+}
+
+.admin-container {
+    max-width: 650px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+#offerForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#offerForm input,
+#offerForm select,
+#offerForm textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font: inherit;
+}
+
+#offerForm button {
+    background: #e5232e;
+    color: white;
+    border: none;
+    padding: 13px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.admin-offer {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 12px 0;
+}
+
+.admin-offer button {
+    background: #222;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

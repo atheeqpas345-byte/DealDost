@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deal Dost | Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="admin-header">
+        <h1>Deal Dost Admin</h1>
+        <p>Manage your local business offers</p>
+        <a href="index.html">← View Main App</a>
+    </header>
+
+    <main class="admin-container">
+        <h2>Add a New Offer</h2>
+
+        <form id="offerForm">
+            <label for="shopName">Business Name</label>
+            <input type="text" id="shopName"
+                   placeholder="e.g. Mag Bites" required>
+
+            <label for="category">Category</label>
+            <select id="category" required>
+                <option value="">Choose category</option>
+                <option value="Cafe">Café</option>
+                <option value="Tiffin">Tiffin</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="Grocery">Grocery</option>
+                <option value="Clothing">Clothing</option>
+            </select>
+
+            <label for="area">Area</label>
+            <input type="text" id="area"
+                   placeholder="e.g. Nagawara" required>
+
+            <label for="offerTitle">Offer Title</label>
+            <input type="text" id="offerTitle"
+                   placeholder="e.g. 10% off on meals" required>
+
+            <label for="description">Description</label>
+            <textarea id="description"
+                      placeholder="Explain the offer" required></textarea>
+
+            <label for="validity">Valid Until</label>
+            <input type="date" id="validity" required>
+
+            <button type="submit">Add Offer</button>
+        </form>
+
+        <p id="adminMessage"></p>
+        <h2>My Offers</h2>
+        <div id="adminOffers"></div>
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+</html>
